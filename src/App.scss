@@ -1,10 +1,11 @@
 .App{
     width: 239px;
-    height: 425px;
+    height: 430px;
     background-color: yellowgreen;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 7px;
 }
 
 .ecran{
@@ -19,7 +20,7 @@
 }
 .clavier{
     width: 90%;
-    height: 300px;
+    height: 305px;
     background-color: black;
     margin-top: 20px;
     color: white;
@@ -37,14 +38,13 @@
                 background-color: yellowgreen;
                 cursor: pointer;
             }
-            .OnOff:checked {
-                background-color: yellow;
-            }
         }
     }
     table{
         font-weight: bolder;
         text-align: center;
+        display: flex;
+        justify-content: center;
         td{
             padding: 20px;
             border: 1px solid white;

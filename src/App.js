@@ -10,8 +10,10 @@ class App extends Component {
     ligne3:[7,8,9,"*"],
     ligne4:[".",0,"=","/"],
     affichage:null,
-    msg:""
+    msg:"erreur"
   }
+
+  reference = React.createRef();
 
   handleChange = (element) => {
     if(this.state.affichage){
@@ -30,14 +32,17 @@ class App extends Component {
     if(this.state.affichage){
       let resultat = this.state.affichage.slice();
       resultat = resultat.join("");
-      if(eval(resultat)){
-        console.log("if")
+      try{
+        eval(resultat);
         this.setState({
           affichage: [eval(resultat)]
         })
       }
-      else{
-        console.log("erreur");
+      catch(e){
+        console.log(e)
+        this.setState({
+          affichage:[this.state.msg]
+        })
       }
     }
     else{
@@ -47,11 +52,13 @@ class App extends Component {
 
   handleOff = () => {
     if(this.state.affichage === null){
+      this.reference.current.style = "background:yellow";
       this.setState({
         affichage:[]
       })
     }
     else{
+      this.reference.current.style ="none";
       this.setState({
         affichage:null
       })
@@ -61,7 +68,7 @@ class App extends Component {
   handleC = () => {
     if(this.state.affichage){
       this.setState({
-        affichage:[0]
+        affichage:[]
       })
     }
     else{
@@ -91,6 +98,7 @@ class App extends Component {
             affichage = {this.state.affichage}
           />
           <Touche
+              reference = {this.reference}
               handleCalcul = {this.handleCalcul}
               handleDelete = {this.handleDelete}
               handleC = {this.handleC} 

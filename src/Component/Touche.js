@@ -7,8 +7,8 @@ function Touche(props) {
     let ligne4 = props.boutton.ligne4 ;
     return (
         <div className="clavier">
-            <div className="menu">
-                <div><input type="checkbox" className ="OnOff" onChange = {props.handleOff} /></div>
+            <div  className="menu">
+                <div ref={props.reference} ><input type="checkbox" className ="OnOff" onChange = {props.handleOff} /></div>
                 <div onClick = {props.handleC}>C</div>
                 <div onClick = {props.handleDelete}><span className="fa fa-arrow-left"></span></div>
             </div>
